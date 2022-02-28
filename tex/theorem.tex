@@ -1,0 +1,124 @@
+
+
+\section{The statement of the conjecture}
+
+\begin{itemize}
+    \item Add Poincaré's first attempt at homology spheres being spheres
+    \item Add the original statement
+    \item Add the modern statement
+\end{itemize}
+
+It seems like an arbitrary simple question related to one of part of a classification of manifolds, so why is the question important? 
+
+One way to think about it is the following. 
+In ancient Egypt people were able to figure out using mathematics that the earth was actually not flat, but it was spherical. 
+This was hundreds of years before any human could travel outside the earth and look at the global structure, and not just the local ``flat'' one. 
+This shows that we can use local information to prove how the global information must be, at least in the case of the earth. 
+Now, ask the same question but a bit bigger. 
+Can humans ever (theoretically) confirm the shape of the universe without traveling outside it to view the global structure? 
+The Poincaré conjecture can be thought of as a mathematical gadget that gives us a partial answer to this. 
+The most likely shapes for the universe is either a sphere or a flat manifold (torus, cylinder), and if true, the Poincaré conjecture gives us a condition to answer this. 
+It gives us a (theoretically) testable procedure that would allow us to say for certain if the universe is a sphere or not. 
+Just simply fly everywhere in the universe with a rope to form loops and try to pull them in. If all loops can be pulled in, then we must live in a spherical universe.   
+
+
+\section{The solution}
+
+Let $M$ be a closed 3-manifold. 
+Any Riemannian metric with constant Ricci curvature has constant sectional curvature. 
+By the Killing-Hopf theorem, any connected Riemannian manifold with constant positive curvature is homeomorphic to a quotient of its universal cover, $S^3$, with the linear free action of its fundamental group. 
+If we assume $M$ is simply connected and closed, like in the Poincare conjecture, a constant curvature must mean a constant positive one. 
+Hence a possible solution to the Poincare conjecture comes from solving the following question; 
+How can we construct a Riemannian metric on $M$ with constant Ricci curvature?  
+
+
+\subsection{Ricci flow}
+
+\textbf{Slogan:} Ricci flow is a procedure for making a manifold ``rounder'' over time. 
+
+The Ricci flow equation is the following differential equation
+
+$$\frac{\partial g(t)}{\partial t} = -2 Ric(g(t))$$
+
+where $Ric(g(t))$ is the Ricci curvature of the metric $g(t)$. 
+Fixed points of this equation are the metrics with constant curvature. 
+A key insight by Hamilton was that if the Ricci curvature was always positive, i.e. $Ric(g(t))> 0$ then the manifold $M$ would become a point in finite time. 
+If we introduce a lower bound for the diameter of the manifold, we would get constant positive curvature everywhere, and hence have a sphere by the discussion earlier. 
+Hence we can define the Ricci flow on an interval $[0, T)$ where $T$ is dependent on the initial metric. 
+
+\begin{example}
+Let $M$ be the sphere with radius $r$ in $\mathbb{R}^3$. 
+Then $g_{ij} = r^2\hat{g}_{ij}$ where $\hat{g}_{ij}$ is the metric for the unit sphere $S^3$. 
+The Ricci tensor $Ric_{ij} = 2\hat{g}_{ij}$ is independent of $r$. 
+Hence the Ricci flow becomes $\frac{dr^2}{dt} = -2\cdot 2$, which has a solution
+
+$$r^2(t) = r^2(0)-2\cdot2t$$
+
+Hence $M$ collapses to a point in finite time. 
+\end{example}
+
+If however the initial metric is not positive, and we have a more complicated topology, for example in a complicated connected sum, we can get what we call finite time singularities forced by the topology. 
+
+\begin{example}
+The simplest example comes from letting $(M, g)$ be a closed Riemannian Einstein manifold. 
+A manifold is called an Einstein manifold if there exists a $\lambda$ such that $Ric(g(t)) = \lambda g(t)$. 
+Then the equation $g_t = (1-2\lambda t)g$ is a Ricci flow with $g_0 = g$. 
+We se this because 
+
+$$\frac{\partial g_t}{\partial t}=-2\lambda g = -2 Ric(g(t)) = -2Ric(g_t(t)).$$
+
+If we let $\lambda> 0$ then $1-2\lambda t < 1$ when $t>0$. 
+Hence we need $t<\frac{1}{2}\lambda$ in order for $g_t$ to be a Riemannian metric. 
+This means we get a singularity in finite time. 
+\end{example}
+
+To solve this problem, i.e. having these nasty singularities, Hamilton introduced Ricci flow with surgery. 
+
+
+\subsection{Ricci flow with surgery}
+
+\textbf{Slogan:} Ricci flow with surgery is like Ricci flow, except we are allowed to surgically cut away finite time singularities during the process. 
+
+If we have a finite amount of singularities, we can ``split'' $[0, T)$ into a finite number of disjoint intervals $[0, T_1), [T_1, T_2), \ldots, [T_{n-1}, T_n)$. 
+Now the manifold changes with the Ricci flow discontinuously only finitely many times.
+
+The key insight of Perelman was that if these singularities appear in finite time they must look like spheres or cylinders, i.e. $\mathbb{R}\times S^2$ or $S^3.$  
+These manifolds we can easily cut away and continue the Ricci flow on the components we get. 
+Perelman proved that this Ricci flow, where we are allowed to surgically remove singularities, also converge to a point in finite time for simply connected compact 3-manifolds. 
+
+In fact he proved something even stronger. 
+We don't even need simply connected, only that the fundamental group of the manifold is a free product of finite groups and infinite cyclic groups. 
+This condition essentially means that if we decompose our manifold $M$ into its prime decomposition, then none of the components are weird and difficult manifolds. 
+This means that all the geometric components of $M$ have Thurston geometries based on the $\mathbb{R}\times S^2$ and $S^3$ geometries. 
+Perelman also used an extended method of infinite time to prove the more general Thurston geometrization theorem, which has the Poincaré conjecture as a consequence as well. 
+
+So, lets devise a cook-book strategy for showing that any simply connected closed 3-manifold is actually the 3-sphere. 
+\begin{enumerate}
+    \item Start by running Ricci flow on $M$. This will produce several spheres, connected by hair-like strands. 
+    \item Cut these strands off and continue the Ricci flow on the components. 
+    \item Repeat this until we (by diameter restrictions) only have disconnected spheres left. 
+    \item The connected sum of these is a sphere, and since the original manifold was connected, $M$ also has to have been a sphere all along.  
+\end{enumerate}
+
+
+\section{Generalizations and related problems}
+
+Some related problems of this theorem were actually proven before the Poincaré conjecture itself. 
+The same statement was actually proven in all dimensions except for $n=4$, i.e. it was known that every homotopy $n$-sphere is homeomorphic to $S^n$ for $0< n\neq 4$. 
+For $n=1, 2$ these are quite easy problems, but there was little belief in that this should hold for $n\geq 5$. 
+The topology community was quite surprised when Stephen Smale proved it to hold for $n\geq 5$ in 1961. 
+The case $n=4$ was proven in 1982 by Michael Freedman. 
+
+We could also try to do the same statement in other categories of manifolds. 
+
+So, fix a category $\mathcal{C}$  of manifolds, i.e. $TopMan$, $Diff$ or $PLMan$. 
+The generalized Poincaré conjecture states that for every $n$, any object in $\mathcal{C}$ homotopy equivalent to the $n$-sphere is also isomorphic, in $\mathcal{C}$, to the $n$-sphere. 
+The normal Poincaré conjecture was the last piece of this theorem for $\mathcal{C} = TopMan$, hence the generalized theorem is true in this setting. 
+
+For smooth manifolds the theorem is false in general, due to Milnor proving the existence of exotic spheres when $n=7$. 
+It is however true for $n = 1, 2, 3, 5$ and $6$ . 
+It is still an open problem weather it holds in dimension $4$. 
+This is often called the smooth Poincaré conjecture. 
+It is however believed to be false by many in the field. 
+For $\mathcal{C} = PLMan$ the case in dimension $4$ is proven to be equivalent to the differential case, and is hence also still open. 
+It is however true for all $n\neq 4$.

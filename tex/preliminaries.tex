@@ -1,0 +1,42 @@
+
+
+\section{Preliminaries}
+
+\begin{itemize}
+    \item Define homology groups
+    \item Define the fundamental group
+\end{itemize}
+
+The Poincaré conjecture very roughly states that every 3-dimensional shape that has no holes, has a defined inside and outside and no boundary, must be the 3-dimensional sphere. 
+It is a bit more complicated than this, but this is essentially the statement. 
+So what is a 3-dimensional shape, and how can we describe these properties that we mentioned using proper mathematics? 
+
+Let's start with shapes. 
+In mathematics, and in particular the field of topology, shapes are described by manifolds. 
+An $n$-dimensional manifold is a shape that looks locally like $n$-dimensional Euclidean space. 
+An example is the surface of the earth. 
+It is locally flat, meaning that the area you see around you looks a bit like just a flat plane, i.e. 2-dimensional Euclidean space. 
+There might be some bumps and cavities, but these can be ignored. 
+
+\begin{definition}
+An $n$-dimensional manifold is a (second countable Hausdorff) topological space $M$ such that for every point $p\in M$, there is an open neighborhood $U$ of $p$ and a homeomorphism $\phi:U\longrightarrow V$, where $V$ is an open set in $\R^n$.
+\end{definition}
+
+Here a homeomorphism means that $\phi$ is a continuous isomorphism where its inverse is also continuous. 
+
+The next thing we need is the notion of homology. 
+I will not cover homology in full detail here.
+It is a really important gadget, but it takes time to cover it properly. 
+That said I have added the definition below.  
+
+\begin{definition}
+Let $M$ be a manifold. 
+We define the n'th singular homology group of $M$ to be the quotient  
+
+$$H_n(M) = \frac{Z_n(M)}{B_n(M)} = \frac{Ker(\partial_n)}{Im(\partial_{n+1})},$$
+
+where $Z_n(M)$ is the group of $n$-cycles and $B_n(X)$ is the group of $n$-boundaries. 
+\end{definition}
+
+
+
